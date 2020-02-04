@@ -109,7 +109,7 @@ app.delete("/borrar/ticket/:id", (req, res) => {
 // })
 
 // -------------------- GET by ID --------------------
-app.get("/ticket/:id", (req, res) => {
+app.get("/calculo/ticket/:id", (req, res) => {
   Ticket.findById(req.params.id)
     .populate("articulos")
     .then(item => {
