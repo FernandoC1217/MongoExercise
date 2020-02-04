@@ -83,16 +83,58 @@ app.post("/crear/ticket", (req, res) => {
   nuevoTicket.save((err, ticketCreado) => {
     return !err
       ? res.status(201).send({ mensaje: "Post exitoso", res: ticketCreado })
-      : res.status(400).send({ msj: "Error en post del articulo", res: err });
+      : res.status(400).send({ msj: "Error en post del ticket", res: err });
   });
 });
 
-// 5e37302f21971e16ec5744cb
-// 5e37304c21971e16ec5744cc
-// 5e38c3f30231ff0ec4f96794
-// 5e38c4000231ff0ec4f96795
+// -------------------- UPDATE --------------------
 
+app.put("/update/ticket/:id", (req, res) => {
+  const idTicket = req.params.id;
+  Ticket.findByIdAndUpdate(idTicket, { $set: req.body }, { new: true })
+    .then(UpdateTicket => res.status(200).send(UpdateTicket))
+    .catch(UpdateTicket => res.status(400).send(UpdateTicket));
+});
 
+// -------------------- DELETE --------------------
 
+app.delete("/borrar/ticket/:id", (req, res) => {
+  Ticket.findByIdAndRemove(req.params.id)
+    .then(DeleteTicket => res.status(200).send(DeleteTicket))
+    .catch(DeleteTicket => res.status(400).send(DeleteTicket));
+});
+
+// var impresionesNombres = nombres.map( item => {
+//   console.log(item.name);
+// })
+
+// -------------------- GET by ID --------------------
+app.get("/ticket/:id", (req, res) => {
+  Ticket.findById(req.params.id)
+    .populate("articulos")
+    .then(item => {
+      var subtotal = 0;
+      var itbms = 0.07;
+      var total = 0;
+      item.articulos.map(articulo => {
+        subtotal = subtotal + articulo.precio;
+      }),
+        itbms = itbms * subtotal,
+        total = total + subtotal + itbms,
+        Ticket.findByIdAndUpdate(req.params.id, {
+          subtotal: subtotal,
+          itbms: itbms,
+          total: total
+        })
+          .then(UpdateTicket => res.status(200).send(UpdateTicket))
+          .catch(UpdateTicket => res.status(400).send(UpdateTicket));
+      // console.log(subtotal);
+      // console.log(`El impuesto es ${itbms}`);
+      // console.log(`El total es ${total}`);
+    })
+    .catch(err => res.status(409).send({ msj: "Error en getById", res: err }));
+});
+
+// 3.
 
 module.exports = { app, port };

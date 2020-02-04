@@ -38,4 +38,4 @@ app.listen(port, () => {
 //     COMO REGLA DE NEGOCIO los documentos "Ticket" deben inicializar
 //     subtotal, IVA y total en 0.
 //     NOTA: Al hacer la petición del paso 3) se debe actualizar
-//     el contenido del ticket según los artículos que contenga
+//     el contenido del ticket según los artículos que contengas
