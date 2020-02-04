@@ -46,7 +46,7 @@ app.post("/crear/articulo", (req, res) => {
   nuevoArticulo.save((err, articulo) => {
     return !err
       ? res.status(201).send({ mensaje: "Articulo creado", res: articulo })
-      : res.status(400).send({ msj: "Error en get", res: err });
+      : res.status(400).send({ msj: "Error al crear Articulo", res: err });
   });
 });
 
@@ -69,26 +69,28 @@ app.delete("/borrar/articulo/:id", (req, res) => {
 
 // TICKETS
 
-
 // -------------------- GET --------------------
 app.get("/tickets/", (req, res) => {
   Ticket.find()
+    .populate("articulos")
     .then(item => res.status(200).send({ mensaje: "Get exitoso", res: item }))
     .catch(err => res.send({ msj: "Error en get", res: err }));
 });
-
 
 // -------------------- POST --------------------
 app.post("/crear/ticket", (req, res) => {
   const nuevoTicket = new Ticket(req.body);
   nuevoTicket.save((err, ticketCreado) => {
     return !err
-      ? res.status(201).send({ mensaje: "Articulo creado", res: ticketCreado })
-      : res.status(400).send({ msj: "Error en get", res: err });
+      ? res.status(201).send({ mensaje: "Post exitoso", res: ticketCreado })
+      : res.status(400).send({ msj: "Error en post del articulo", res: err });
   });
 });
 
-
+// 5e37302f21971e16ec5744cb
+// 5e37304c21971e16ec5744cc
+// 5e38c3f30231ff0ec4f96794
+// 5e38c4000231ff0ec4f96795
 
 
 
