@@ -59,10 +59,10 @@ app.put("/update/articulo/:id", (req, res) => {
 
 // -------------------- DELETE --------------------
 
-app.delete("/borrar/articulo/:id", (req, res) => {
-  Articulo.findByIdAndRemove(req.params.id)
-    .then(DeletePelicula => res.status(200).send(DeletePelicula))
-    .catch(DeletePelicula => res.status(400).send(DeletePelicula));
-});
+// app.delete("/borrar/articulo/:id", (req, res) => {
+//   Articulo.findByIdAndRemove(req.params.id)
+//     .then(DeletePelicula => res.status(200).send(DeletePelicula))
+//     .catch(DeletePelicula => res.status(400).send(DeletePelicula));
+// });
 
 module.exports = { app, port };
