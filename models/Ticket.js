@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const articulosSchema = require("./Articulo");
+const Articulo = require("./Articulo");
 
 const ticketSchema = new Schema({
     subtotal: { type: Number, default: 0},
