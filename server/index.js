@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Importar el modelo Articulo
+// Importar el modelo Articulo y Ticket
 const Articulo = require("../models/Articulo");
 const Ticket = require("../models/Ticket");
 
@@ -104,11 +104,9 @@ app.delete("/borrar/ticket/:id", (req, res) => {
     .catch(DeleteTicket => res.status(400).send(DeleteTicket));
 });
 
-// var impresionesNombres = nombres.map( item => {
-//   console.log(item.name);
-// })
 
-// -------------------- GET by ID --------------------
+
+// -------------------- GET by ID -------------------- punto 3
 app.get("/calculo/ticket/:id", (req, res) => {
   Ticket.findById(req.params.id)
     .populate("articulos")
@@ -135,6 +133,5 @@ app.get("/calculo/ticket/:id", (req, res) => {
     .catch(err => res.status(409).send({ msj: "Error en getById", res: err }));
 });
 
-// 3.
 
 module.exports = { app, port };
