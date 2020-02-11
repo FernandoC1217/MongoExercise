@@ -12,6 +12,11 @@ app.use(bodyParser.json());
 const Articulo = require("../models/Articulo");
 const Ticket = require("../models/Ticket");
 
+// import CORS
+const cors = require("cors");
+app.use(cors());
+
+
 // ------------------------------- CRUD -------------------------------------//
 
 // ARTICULOS
