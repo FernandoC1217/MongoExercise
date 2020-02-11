@@ -1,0 +1,19 @@
+{
+  "name": "mongoexercises",
+  "version": "1.0.0",
+  "description": "Descripcion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FernandoC1217/MongoExercise.git"
+  },
+  "author": "Fernando C",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FernandoC1217/MongoExercise/issues"
+  },
+  "homepage": "https://github.com/FernandoC1217/MongoExercise#readme"
+}
